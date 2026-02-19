@@ -378,6 +378,7 @@ static void set_directories(const char *core_name) {
 		mkdir(dst, 0755);
 		strncpy(config_dir, save_dir, MAX_PATH-1);
 		strncpy(system_dir, save_dir, MAX_PATH-1);
+	}
 #else
 		snprintf(picoarch_root, MAX_PATH, "%s/.picoarch", home);
 		mkdir(picoarch_root, 0755);

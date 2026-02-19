@@ -3,6 +3,7 @@ platform   ?= unix
 core_platform ?= $(platform)
 
 CC        = $(CROSS_COMPILE)gcc
+CXX        = $(CROSS_COMPILE)g++
 SYSROOT   = $(shell $(CC) --print-sysroot)
 
 PROCS     = -j4
@@ -21,7 +22,10 @@ LDFLAGS    = -lc -ldl -lgcc -lm -lSDL -lasound -lpng -lz -Wl,--gc-sections -flto
 # Unpolished or slow cores that build
 # EXTRA_CORES += mame2003_plus prboom scummvm tyrquake
 
-CORES = beetle-pce-fast bluemsx fceumm fmsx gambatte gme gpsp mame2000 mednafen_ngp mednafen_wswan pcsx_rearmed picodrive pokemini quicknes smsplus-gx snes9x2002 snes9x2005 stella2014 $(EXTRA_CORES)
+CORES = beetle-pce-fast bluemsx fceumm fmsx gambatte gme gpsp mame2000 quicknes smsplus-gx snes9x2002 fbalpha2012 $(EXTRA_CORES)
+# CORES = picodrive pcsx_rearmed // to fix
+# CORES = mednafen_ngp mednafen_wswan pokemini stella2014 // add trimui makefile
+# CORES = snes9x2005 // fix git clone
 
 ifneq ($(platform), trimui)
 CORES := $(CORES) dosbox-pure fake-08 fbalpha2012 snes9x2005_plus snes9x2010
